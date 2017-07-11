@@ -2,6 +2,7 @@
 ## 1、获取数据的访问权限，并获取数据
   具体可以访问以下网站：
     https://mimic.physionet.org/
+    
     https://github.com/MIT-LCP/mimic-code/
   可以在以上两个网站中获得mimic-iiii的相关信息
 ## 2、在本地构建数据库，方便数据的提取
