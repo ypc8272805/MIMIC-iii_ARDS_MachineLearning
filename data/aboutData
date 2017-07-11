@@ -10,12 +10,46 @@
 t_data、v_data的存储方式一样，都是一个A*28的矩阵，A代表行数，也就是有多少个数据点。
 下面详细说明每一列的具体含义：
 
-第1列：病人进入ICU的时间,将时间变量换算成了数值，为了方便后期的数据存储和数据处理
-第2列：呼吸机模式，也就是病人在ICU中使用呼吸机的模式，由于病人在ICU中汇不停地切换呼吸机的模式，所以这里这个参数并不准确，只能反映病人的一个整体使用模式的情况
-第3列：PEEP Set ，根据MIMIC数据库中的说明，这个参数是呼吸机设置的PEEP具体数值，单位为cmH2O
-第4列：Tidal volume set，单位ml
-第5列：FiO2，单位%
-第6列：O2 flow ，单位
+第01列：病人进入ICU的时间,将时间变量换算成了数值，为了方便后期的数据存储和数据处理
+第02列：呼吸机模式，也就是病人在ICU中使用呼吸机的模式，由于病人在ICU中汇不停地切换呼吸机的模式，
+       所以这里这个参数并不准确，只能反映病人的一个整体使用模式的情况
+        Assist Control	  1
+        SIMV+PS	          2
+        SIMV	            3
+        CMV	              4
+        Pressure Control	5
+        Pressure Support	6
+        Other/Remarks	    7
+        CPAP	            8
+        CPAP+PS	          9
+        TCPCV	            10
+        无信息             0
+第03列：PEEP Set ，根据MIMIC数据库中的说明，这个参数是呼吸机设置的PEEP具体数值，单位为cmH2O
+第04列：Tidal volume set，单位 ml
+第05列：FiO2，单位 %
+第06列：Respiratory rate set ，单位 次/min
+第07列：O2 flow ，单位 L/min
+第08列：PaO2 ，单位 mmHg
+第09列：SpO2，单位 %
+第10列：Mean air pressure ,单位 cmH2O
+第11列：Tidal volume observed ，单位 ml
+第12列：Respiratory rate observed，单位 次/min
+第13列：体温 ，单位 摄氏度
+第14列：Heart rate 单位 次/min
+第15列：NBPS 袖带收缩压 单位 mmHg
+第16列：NBPD 袖带舒张压 单位 mmHg
+第17列：NBPM 袖带平均压 单位 mmHg
+第18列：体重 单位 kg
+第19列：GCS 格拉斯哥指数 
+第20列：病人的id号，在mimic字典中为hadm_id,是就诊记录主索引
+第21列：PaO2/FiO2(PF)
+第22列：SpO2/FiO2(SF)
+第23列：((FiO2*100)*MAP)/PaO2 氧合指数
+第24列：((FiO2*100)*MAP)/SpO2 
+第25列：Log10(PF) 
+第26列：Log10(SF)
+第27列：年龄 大于等于89岁的都是89
+第28列：性别 男=0 女=1
 
 并保存成mat格式的文件（可以使用matlab直接访问，使用的matlab版本是2017a）具体提取原则如下：
 关于 t_v_data.mat
