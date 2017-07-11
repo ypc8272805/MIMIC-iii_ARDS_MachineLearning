@@ -1,12 +1,15 @@
-#获取数据
+获取数据
+
 1、获取数据的访问权限，并获取数据
   具体可以访问以下网站：
     https://mimic.physionet.org/
     https://github.com/MIT-LCP/mimic-code
   可以在以上两个网站中获得mimic-iiii的相关信息
+  
 2、在本地构建数据库，方便数据的提取
   mimic网站提供了在window平台创建数据库的具体方法，如果感兴趣可以按照以下网站尝试操作一下，当然，在本地构建数据库相比直接访问csv文件要便利的多。
   https://mimic.physionet.org/tutorials/install-mimic-locally-windows/
+  
 3、从数据库获取项目所需要的信息
   3.1 获取相关疾病病人的病例号
     本项目只需要提取ARDS患者相关病例号，根据ARDS的相关定义，在d_icd_diagnoses.long_title中人工去寻找ARDS相关的疾病，最终我们确定了以下的相关疾病：
