@@ -1,23 +1,28 @@
-%用来提取数据，每隔病人的数据保存在一个文件中，用ID号作为文件名。保存三个变量，诊断信息、病人基本信息、chartevents数据
-%2017.5.12
-%新增加了变量
-%这里不对病人的病例进行筛选了，提取所有病人的就诊信息，后期再找合适的病人数据
-%提取病人的限制条件： 
-%病人基本信息里要包括：种族 体重
+%%
+%File Name:getdata_5_12.m
+%Author:杨鹏程
+%Version:v1.1
+%Data:2017.05.12
+%DESCRIPTION:
+%           按照admissions.hadm_id字段从数据库中提取病的信息并保存在mimicdata\allpatientsdata\hadm_id.mat文件中
+%           每个文件中保存一下变量：
+%           data_info:病人基本信息，是从数据库pat_icu视图中获取的，具体包括的信息可参见pat_icu视图，在此不一一列举；
+%           data_dig:来自diagnoses_icd表，病人的全部诊断信息，每个病人有多个诊断信息。
+%           data_Value:提取的病人的具体参数信息。联合chartevents、para_updata（此表中存储了我们在本次是验证所关心的itemid，当然这些itemid都是反复核对的）、icustays（用于保证所有参数都是在进入ICU记录的）三个表。
+%               包括字段：subject_id、hadm_id、itemid、value、valuenum、valueuom、para_flag、charttime
+%           data_w：病人体重信息
+%           data_race：种族信息
+%           通过次方法，整理了55796份病例数据。
+%%
+%连接数据库
 clear all;
 conn = database('PostgreSQL30','postgres','19871115');
-%先要找到我需要的病案号，还是以ICD=51881为例 
 Pat_ID='select adm.hadm_id from mimiciii.admissions adm';
 Pat_ID_curs=exec(conn,Pat_ID);
 Pat_ID_curs=fetch(Pat_ID_curs);
 data_ID=cell2mat(Pat_ID_curs.Data);
-%save ('D:/ARDS/data1/Pat_ID.mat','data');
-%开始遍历ID，查询所有病人，每个病人以ID号保存起来
-%Pat_Para_Value_SQL只是保存了我需要的病人的参数信息，我还需要病人的基本信息，如年龄、性别、种族、ICU入院日期等等
-%icd51881 包含年龄、性别
-%pat_icu有病人icu的所有信息：subject_id、hadm_id、 first_careunit、 intime outtime
-%deathtime age gender
-%现在我只需要用icd51881 与pat_icu 进行联合查询就可以的到病人的基本信息
+%%
+%执行SQL语句
 for i=1:length(data_ID)
     %获取诊断信息
     Pat_dig_SQL=['select * from mimiciii.diagnoses_icd where hadm_id=' num2str(data_ID(i,1))];  
@@ -27,8 +32,7 @@ for i=1:length(data_ID)
     Pat_info_SQL=['select * from mimiciii.pat_icu where hadm_id=' num2str(data_ID(i,1))];    
     %获取病人的种族信息，race在chartevents中
     Pat_race_SQL=['select value from mimiciii.chartevents cha where cha.itemid=' num2str(226545) '  and cha.hadm_id=' num2str(data_ID(i,1)) ' limit 1' ];
-    %参数提取
-    %这里提取了720 呼吸机设置参数 在value中是一个字符串变量 要注意
+    %参数提取，这里提取了720 呼吸机设置参数 在value中是一个字符串变量 要注意
     Pat_Para_Value_SQL =[ 'select distinct cha.subject_id,cha.hadm_id,cha.itemid,cha.value,cha.valuenum,cha.valueuom,para_id.para_flag,cha.charttime'...
         ' from mimiciii.chartevents cha'...
         ' inner join mimiciii.para_update para_id'...
@@ -65,6 +69,5 @@ for i=1:length(data_ID)
     filename=strcat('D:/mimicdata/allpatientsdata/',num2str(data_ID(i,1)),'.mat');
     save (filename,'data_info','data_dig','data_Values','data_w','data_race');
     end
-    i
 end
 close(conn);
