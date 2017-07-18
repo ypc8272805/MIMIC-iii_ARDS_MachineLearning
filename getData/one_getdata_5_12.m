@@ -1,21 +1,23 @@
 %%
 %File Name:getdata_5_12.m
-%Author:ÑîÅô³Ì
+%Author:æ¨é¹ç¨‹
 %Version:v1.1
 %Data:2017.05.12
 %DESCRIPTION:
+%           è¿™æ˜¯æˆ‘åœ¨wangdanåˆ†æ”¯ä¸‹çš„ä¿®æ”¹
+%           æµ‹è¯•
 %           Use Github to commit this file 
-%           °´ÕÕadmissions.hadm_id×Ö¶Î´ÓÊý¾Ý¿âÖÐÌáÈ¡²¡µÄÐÅÏ¢²¢±£´æÔÚmimicdata\allpatientsdata\hadm_id.matÎÄ¼þÖÐ
-%           Ã¿¸öÎÄ¼þÖÐ±£´æÒ»ÏÂ±äÁ¿£º
-%           data_info:²¡ÈË»ù±¾ÐÅÏ¢£¬ÊÇ´ÓÊý¾Ý¿âpat_icuÊÓÍ¼ÖÐ»ñÈ¡µÄ£¬¾ßÌå°üÀ¨µÄÐÅÏ¢¿É²Î¼ûpat_icuÊÓÍ¼£¬ÔÚ´Ë²»Ò»Ò»ÁÐ¾Ù£»
-%           data_dig:À´×Ôdiagnoses_icd±í£¬²¡ÈËµÄÈ«²¿Õï¶ÏÐÅÏ¢£¬Ã¿¸ö²¡ÈËÓÐ¶à¸öÕï¶ÏÐÅÏ¢¡£
-%           data_Value:ÌáÈ¡µÄ²¡ÈËµÄ¾ßÌå²ÎÊýÐÅÏ¢¡£ÁªºÏchartevents¡¢para_updata£¨´Ë±íÖÐ´æ´¢ÁËÎÒÃÇÔÚ±¾´ÎÊÇÑéÖ¤Ëù¹ØÐÄµÄitemid£¬µ±È»ÕâÐ©itemid¶¼ÊÇ·´¸´ºË¶ÔµÄ£©¡¢icustays£¨ÓÃÓÚ±£Ö¤ËùÓÐ²ÎÊý¶¼ÊÇÔÚ½øÈëICU¼ÇÂ¼µÄ£©Èý¸ö±í¡£
-%               °üÀ¨×Ö¶Î£ºsubject_id¡¢hadm_id¡¢itemid¡¢value¡¢valuenum¡¢valueuom¡¢para_flag¡¢charttime
-%           data_w£º²¡ÈËÌåÖØÐÅÏ¢
-%           data_race£ºÖÖ×åÐÅÏ¢
-%           Í¨¹ý´Î·½·¨£¬ÕûÀíÁË55796·Ý²¡ÀýÊý¾Ý¡£
+%           æŒ‰ç…§admissions.hadm_idå­—æ®µä»Žæ•°æ®åº“ä¸­æå–ç—…çš„ä¿¡æ¯å¹¶ä¿å­˜åœ¨mimicdata\allpatientsdata\hadm_id.matæ–‡ä»¶ä¸­
+%           æ¯ä¸ªæ–‡ä»¶ä¸­ä¿å­˜ä¸€ä¸‹å˜é‡ï¼š
+%           data_info:ç—…äººåŸºæœ¬ä¿¡æ¯ï¼Œæ˜¯ä»Žæ•°æ®åº“pat_icuè§†å›¾ä¸­èŽ·å–çš„ï¼Œå…·ä½“åŒ…æ‹¬çš„ä¿¡æ¯å¯å‚è§pat_icuè§†å›¾ï¼Œåœ¨æ­¤ä¸ä¸€ä¸€åˆ—ä¸¾ï¼›
+%           data_dig:æ¥è‡ªdiagnoses_icdè¡¨ï¼Œç—…äººçš„å…¨éƒ¨è¯Šæ–­ä¿¡æ¯ï¼Œæ¯ä¸ªç—…äººæœ‰å¤šä¸ªè¯Šæ–­ä¿¡æ¯ã€‚
+%           data_Value:æå–çš„ç—…äººçš„å…·ä½“å‚æ•°ä¿¡æ¯ã€‚è”åˆcharteventsã€para_updataï¼ˆæ­¤è¡¨ä¸­å­˜å‚¨äº†æˆ‘ä»¬åœ¨æœ¬æ¬¡æ˜¯éªŒè¯æ‰€å…³å¿ƒçš„itemidï¼Œå½“ç„¶è¿™äº›itemidéƒ½æ˜¯åå¤æ ¸å¯¹çš„ï¼‰ã€icustaysï¼ˆç”¨äºŽä¿è¯æ‰€æœ‰å‚æ•°éƒ½æ˜¯åœ¨è¿›å…¥ICUè®°å½•çš„ï¼‰ä¸‰ä¸ªè¡¨ã€‚
+%               åŒ…æ‹¬å­—æ®µï¼šsubject_idã€hadm_idã€itemidã€valueã€valuenumã€valueuomã€para_flagã€charttime
+%           data_wï¼šç—…äººä½“é‡ä¿¡æ¯
+%           data_raceï¼šç§æ—ä¿¡æ¯
+%           é€šè¿‡æ¬¡æ–¹æ³•ï¼Œæ•´ç†äº†55796ä»½ç—…ä¾‹æ•°æ®ã€‚
 %%
-%Á¬½ÓÊý¾Ý¿â
+%è¿žæŽ¥æ•°æ®åº“
 clear all;
 conn = database('PostgreSQL30','postgres','19871115');
 Pat_ID='select adm.hadm_id from mimiciii.admissions adm';
@@ -23,17 +25,17 @@ Pat_ID_curs=exec(conn,Pat_ID);
 Pat_ID_curs=fetch(Pat_ID_curs);
 data_ID=cell2mat(Pat_ID_curs.Data);
 %%
-%Ö´ÐÐSQLÓï¾ä
+%æ‰§è¡ŒSQLè¯­å¥
 for i=1:length(data_ID)
-    %»ñÈ¡Õï¶ÏÐÅÏ¢
+    %èŽ·å–è¯Šæ–­ä¿¡æ¯
     Pat_dig_SQL=['select * from mimiciii.diagnoses_icd where hadm_id=' num2str(data_ID(i,1))];  
-    %»ñÈ¡ÌåÖØÐÅÏ¢
+    %èŽ·å–ä½“é‡ä¿¡æ¯
     Pat_w_SQL=['select round(avg(patientweight)) from mimiciii.inputevents_mv input where input.hadm_id=' num2str(data_ID(i,1))];
-    %´ÓÊÓÍ¼ÖÐ»ñÈ¡²¡ÈË»ù±¾ÐÅÏ¢
+    %ä»Žè§†å›¾ä¸­èŽ·å–ç—…äººåŸºæœ¬ä¿¡æ¯
     Pat_info_SQL=['select * from mimiciii.pat_icu where hadm_id=' num2str(data_ID(i,1))];    
-    %»ñÈ¡²¡ÈËµÄÖÖ×åÐÅÏ¢£¬raceÔÚcharteventsÖÐ
+    %èŽ·å–ç—…äººçš„ç§æ—ä¿¡æ¯ï¼Œraceåœ¨charteventsä¸­
     Pat_race_SQL=['select value from mimiciii.chartevents cha where cha.itemid=' num2str(226545) '  and cha.hadm_id=' num2str(data_ID(i,1)) ' limit 1' ];
-    %²ÎÊýÌáÈ¡£¬ÕâÀïÌáÈ¡ÁË720 ºôÎü»úÉèÖÃ²ÎÊý ÔÚvalueÖÐÊÇÒ»¸ö×Ö·û´®±äÁ¿ Òª×¢Òâ
+    %å‚æ•°æå–ï¼Œè¿™é‡Œæå–äº†720 å‘¼å¸æœºè®¾ç½®å‚æ•° åœ¨valueä¸­æ˜¯ä¸€ä¸ªå­—ç¬¦ä¸²å˜é‡ è¦æ³¨æ„
     Pat_Para_Value_SQL =[ 'select distinct cha.subject_id,cha.hadm_id,cha.itemid,cha.value,cha.valuenum,cha.valueuom,para_id.para_flag,cha.charttime'...
         ' from mimiciii.chartevents cha'...
         ' inner join mimiciii.para_update para_id'...
@@ -45,24 +47,24 @@ for i=1:length(data_ID)
         ' and cha.charttime>icu.intime'...
         ' and cha.charttime<icu.outtime'...
         ' order by para_id.para_flag,cha.charttime ;'];
-    %Ö´ÐÐpat_dig_sql
+    %æ‰§è¡Œpat_dig_sql
     Pat_dig_value=exec(conn,Pat_dig_SQL);
     Pat_dig_value=fetch(Pat_dig_value);
     data_dig=Pat_dig_value.Data;
-    %Ö´ÐÐPat_w_SQL
+    %æ‰§è¡ŒPat_w_SQL
     Pat_w_value=exec(conn,Pat_w_SQL);
     Pat_w_value=fetch(Pat_w_value);
     data_w=Pat_w_value.Data;
-    %Ö´ÐÐpat_info_sql
+    %æ‰§è¡Œpat_info_sql
     Pat_info_value=exec(conn,Pat_info_SQL);
     Pat_info_value=fetch(Pat_info_value);
     data_info=Pat_info_value.Data;
     data_info=data_info';
-    %Ö´ÐÐPat_race_SQL
+    %æ‰§è¡ŒPat_race_SQL
     Pat_race_value=exec(conn,Pat_race_SQL);
     Pat_race_value=fetch(Pat_race_value);
     data_race=Pat_race_value.Data;
-    %Ö´ÐÐpat_ipara_value_sql
+    %æ‰§è¡Œpat_ipara_value_sql
     Pat_Values = exec(conn,Pat_Para_Value_SQL);
     Pat_Values = fetch(Pat_Values);
     data_Values=Pat_Values.Data;
