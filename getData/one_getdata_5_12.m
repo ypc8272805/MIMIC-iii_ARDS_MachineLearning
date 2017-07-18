@@ -5,6 +5,7 @@
 %Data:2017.05.12
 %DESCRIPTION:
 %           这是我在wangdan分支下的修改
+%           测试
 %           Use Github to commit this file 
 %           按照admissions.hadm_id字段从数据库中提取病的信息并保存在mimicdata\allpatientsdata\hadm_id.mat文件中
 %           每个文件中保存一下变量：
