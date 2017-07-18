@@ -4,6 +4,7 @@
 %Version:v1.1
 %Data:2017.05.12
 %DESCRIPTION:
+%           Use Github to commit this file 
 %           按照admissions.hadm_id字段从数据库中提取病的信息并保存在mimicdata\allpatientsdata\hadm_id.mat文件中
 %           每个文件中保存一下变量：
 %           data_info:病人基本信息，是从数据库pat_icu视图中获取的，具体包括的信息可参见pat_icu视图，在此不一一列举；
